@@ -1,0 +1,38 @@
+.slick-slider {
+  width: 100%;
+  overflow: visible;
+}
+/* .slick-dots li button:before {
+  color: white;
+}
+.slick-dots li.slick-active button:before {
+  color: var(--primary-color);
+}
+.slick-next {
+  position: absolute;
+  z-index: 3;
+  right: 10rem;
+}
+.slick-prev {
+  position: absolute;
+  z-index: 3;
+  left: 10rem;
+}
+.slick-next:before {
+  color: var(--primary-color);
+  font-size: 4vw;
+  margin-right: -3.8vw;
+}
+
+.slick-prev:before {
+  color: var(--primary-color);
+  font-size: 4vw;
+  margin-left: -4vw;
+}
+
+.slick-dots {
+  width: 71vw;
+}
+.slick-slider.slick-initialized {
+  padding: 0 14vw;
+} */

@@ -1,0 +1,22 @@
+.default-theme {
+  --primary-color: #82d8d8;
+  --primary-color-light: #b1e7e7;
+  --secondary-color: #524763;
+  --secondary-color-light: #625577;
+  --secondary-color-lightest: #c1bacd;
+}
+.beige-theme {
+  --primary-color: #56ffc9;
+  --primary-color-light: #cdffef;
+  --secondary-color: #bd5d47;
+  --secondary-color-light: #cf8979;
+  --secondary-color-lightest: #e5c0b7;
+}
+
+.dark-theme {
+  --primary-color: #f638dc;
+  --primary-color-light: #cdffef;
+  --secondary-color: #200f21;
+  --secondary-color-light: #382039;
+  --secondary-color-lightest: #58325a;
+}

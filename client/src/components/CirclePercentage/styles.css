@@ -1,0 +1,67 @@
+.circle-wrap {
+  margin: 0 !important;
+  margin-left: 4rem !important;
+  width: 10rem;
+  height: 10rem;
+  background: #e6e2e7;
+  border-radius: 50%;
+}
+
+.circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+  width: 10rem;
+  height: 10rem;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle-wrap .circle .mask {
+  clip: rect(0px, 10rem, 10rem, 5rem);
+}
+
+.circle-wrap .circle .mask .fill {
+  clip: rect(0px, 5rem, 10rem, 0px);
+  /* background-color: #9e00b1; */
+}
+
+.circle-wrap .circle .mask.full,
+.circle-wrap .circle .fill {
+  animation: fill ease-in-out 3s;
+  transform: rotate(126deg);
+}
+
+@keyframes fill {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(126deg);
+  }
+}
+
+.circle-wrap .inside-circle {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background: transparent;
+
+  line-height: 8rem;
+  text-align: center;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  position: absolute;
+  z-index: 100;
+  font-weight: 700;
+  font-size: 2em;
+}
+
+.inside-circle-background {
+  height: 5rem;
+  width: 5rem;
+  position: absolute;
+  left: 19%;
+  top: 19%;
+  background: yellowgreen;
+  z-index: -1;
+  border-radius: 50%;
+}

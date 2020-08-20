@@ -1,0 +1,38 @@
+import Papa from "papaparse";
+
+export const actors = (data, setState) => {
+  console.log(setState);
+
+  const actorsPerPage = 10;
+  let pages = {};
+  let names = [];
+  for (let index in data) {
+    names.push(data[index][0]);
+  }
+
+  let pageNumber = 1;
+  for (let j = 1; j < names.length; j += actorsPerPage) {
+    let page = `page${pageNumber}`;
+    pages[page] = names.slice(j, j + 10);
+    pageNumber++;
+  }
+  if (setState) {
+    setState(pages);
+  }
+};
+export const parseData = (url, callBack) => {
+  Papa.parse(url, {
+    download: true,
+    dynamicTyping: true,
+    complete: (results) => {
+      callBack(results.data);
+    },
+  });
+};
+parseData(
+  "https://raw.githubusercontent.com/data-8/tutor/master/Week2/actors.csv",
+  actors
+);
+console.log("hi");
+
+console.log(actors());
