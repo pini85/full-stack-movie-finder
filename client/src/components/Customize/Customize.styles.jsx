@@ -39,7 +39,7 @@ export const IconContainer = styled.div`
   cursor: pointer;
   font-size: 3rem;
   color: var(--primary-color);
-  margin-right: 2rem;
+  margin: 0 2rem;
   transition: all 0.5s;
   &:hover {
     transform: rotate(180deg) scale(1.3);

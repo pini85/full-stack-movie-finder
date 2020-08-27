@@ -75,8 +75,8 @@ const Search = (props) => {
         placeholder="The world is your oyster..."
       />
       <Button
-        search={true}
-        title={"search"}
+        icon="search"
+        title="search"
         // disabled={isSending}
         handleClick={(e) => handleClick(e)}
       ></Button>
