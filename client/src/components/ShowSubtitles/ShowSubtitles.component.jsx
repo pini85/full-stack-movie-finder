@@ -7,12 +7,14 @@ import { SpinnerContainer } from "./showSubtitles.styles";
 
 const ShowSubtitles = ({ fetchSubtitles, subtitles }) => {
   const [isLoading, setLoading] = useState(true);
+  console.log("helooooooooooooo");
   useEffect(() => {
     const fetchData = async () => {
       await fetchSubtitles();
       setLoading(false);
     };
     fetchData();
+    console.log(subtitles);
   }, [fetchSubtitles]);
   return (
     <>

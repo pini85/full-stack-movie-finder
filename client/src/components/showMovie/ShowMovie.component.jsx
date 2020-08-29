@@ -55,7 +55,7 @@ const ShowMovie = ({ item, colors, goToMovie, isSecretSequence }) => {
     switch (optionType) {
       case "torrent":
         return <ShowTorrents></ShowTorrents>;
-      case "sub":
+      case "subtitles":
         return <ShowSubtitles></ShowSubtitles>;
       case "magnets":
         return <ShowMagnets></ShowMagnets>;
