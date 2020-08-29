@@ -218,6 +218,13 @@ const currentPageReducer = (page = 1, action) => {
   return page;
 };
 
+const fetchCurrentUserReducer = (currentUser = null, action) => {
+  if (action.type === "FETCH_CURRENT_USER") {
+    return action.payload;
+  }
+  return currentUser;
+};
+
 export default combineReducers({
   fetchMovies: fetchMoviesReducer,
   selectedMovie: selectedMovieReducer,
@@ -249,4 +256,5 @@ export default combineReducers({
   isSecretSequence: isSecretSequenceReducer,
   showSearchResults: showSearchResultsReducer,
   currentPage: currentPageReducer,
+  fetchCurrentUser: fetchCurrentUserReducer,
 });

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { fetchCurrentUser } from "./redux/actions/index";
 import Home from "./components/home/Home.component";
 import Navbar from "./components/Navbar/Navbar";
 import Search from "./components/Search/Search.component";
@@ -16,7 +16,10 @@ import Customize from "./components/Customize/Customize.component";
 import Film from "./components/spinners/Film/Film.component";
 import ScrollIntoView from "./components/ScrollIntoView.component";
 
-const App = ({ theme }) => {
+const App = ({ theme, fetchCurrentUser }) => {
+  useEffect(() => {
+    fetchCurrentUser();
+  }, []);
   return (
     <div id="app" className={theme}>
       <Router>
@@ -51,4 +54,6 @@ const mapStateToProps = (state) => ({
   theme: state.displayTheme,
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {
+  fetchCurrentUser: fetchCurrentUser,
+})(App);

@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   tmdbQueryApi,
   tmdbApiPopular,
@@ -550,4 +551,11 @@ export const currentPage = (page) => {
     type: "CURRENT_PAGE",
     payload: page,
   };
+};
+
+export const fetchCurrentUser = () => async (dispatch) => {
+  const user = await axios.get("/api/current_user");
+  console.log(user.data);
+
+  dispatch({ type: "FETCH_CURRENT_USER", payload: user.data });
 };
