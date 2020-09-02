@@ -6,11 +6,11 @@ const Login = ({ currentUser }) => {
   return (
     <>
       {currentUser ? (
-        <a href="api/logout">
-          <Button title="logout" icon="google"></Button>
+        <a href="/api/logout">
+          <Button title="logout" icon={false}></Button>
         </a>
       ) : (
-        <a href="auth/google">
+        <a href="/auth/google">
           <Button title="sign in with google" icon="google"></Button>
         </a>
       )}

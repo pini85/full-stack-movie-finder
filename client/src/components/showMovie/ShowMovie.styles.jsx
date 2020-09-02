@@ -33,7 +33,8 @@ export const HeroContainer = styled.div`
     left: 0;
     z-index: -1;
     overflow: hidden;
-    background: url(https://image.tmdb.org/t/p/w1280//${(props) => (props.poster ? props.poster : null)});
+    background: url(https://image.tmdb.org/t/p/w1280//${(props) =>
+      props.poster ? props.poster : null});
     background-size: 100% 100%;
     background-repeat: cover;
     background-attachment: inherit;
@@ -45,6 +46,7 @@ export const TopContainer = styled.div`
 `;
 
 export const MovieCard = styled.div`
+  position: relative;
   background: ${(props) => props.color};
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   @media only screen and (max-width: 500px) {
@@ -89,14 +91,16 @@ export const OptionsContainer = styled.div`
   padding: 4rem 0;
   /* & > :nth-child(odd) {
     background: ${(props) =>
-      `linear-gradient(to right, ${props.color2}, ${props.color1})`};
+    `linear-gradient(to right, ${props.color2}, ${props.color1})`};
     text-align: left;
     padding-left: 10%;
     transform: perspective(500px) rotateY(45deg);
   }
   & > :nth-child(even) {
-    background: ${(props) =>
-      `linear-gradient(to left, ${props.color2}, ${props.color1})`};
+    background: ${(
+    props
+  ) =>
+    `linear-gradient(to left, ${props.color2}, ${props.color1})`};
     text-align: right;
     padding-right: 10%;
     transform: perspective(500px) rotateY(-45deg);

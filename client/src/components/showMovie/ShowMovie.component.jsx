@@ -15,6 +15,7 @@ import Trailer from "../Trailer/Trailer.component";
 import Reviews from "../Reviews/Review.component";
 import Modal from "../Modal/Modal.component";
 import LoadingScreen from "../LoadingScreen/LoadingScreen.component";
+import SaveMovie from "../SaveMovie/SaveMovie.component";
 
 import {
   Container,
@@ -97,7 +98,6 @@ const ShowMovie = ({ item, colors, goToMovie, isSecretSequence }) => {
 
   return (
     <>
-      hi
       {isLoading ? (
         <LoadingScreen></LoadingScreen>
       ) : (
@@ -111,6 +111,7 @@ const ShowMovie = ({ item, colors, goToMovie, isSecretSequence }) => {
             )}
 
             <MovieCard color={colors.lightVibrant}>
+              <SaveMovie></SaveMovie>
               <HeroContainer poster={item.backdrop}>
                 <TopContainer>
                   <ShowMovieInfo />

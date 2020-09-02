@@ -559,3 +559,9 @@ export const fetchCurrentUser = () => async (dispatch) => {
 
   dispatch({ type: "FETCH_CURRENT_USER", payload: user.data });
 };
+
+export const saveMovie = (id) => async (dispatch) => {
+  console.log(id);
+  const x = await axios.post("/api/save/movie", { id });
+  console.log(x.data);
+};

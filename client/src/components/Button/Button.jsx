@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonContainer } from "./button.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import google from "../../assets/images/google.svg";
 
 const Button = (props) => {
