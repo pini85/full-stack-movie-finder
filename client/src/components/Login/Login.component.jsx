@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { userData } from "../../redux/actions/index";
 
 import Button from "../Button/Button";
-const Login = ({ currentUser }) => {
+const Login = ({ currentUser, userData }) => {
+  useEffect(() => {
+    const fetchUserData = async () => {
+      if (currentUser) {
+        await userData();
+      }
+    };
+    fetchUserData();
+  }, [currentUser]);
+
   return (
     <>
       {currentUser ? (
@@ -20,4 +30,6 @@ const Login = ({ currentUser }) => {
 const mapStateToProps = (state) => ({
   currentUser: state.fetchCurrentUser,
 });
-export default connect(mapStateToProps, null)(Login);
+export default connect(mapStateToProps, {
+  userData: userData,
+})(Login);

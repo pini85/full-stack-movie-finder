@@ -225,6 +225,13 @@ const fetchCurrentUserReducer = (currentUser = null, action) => {
   return currentUser;
 };
 
+const fetchUserDataReducer = (userData = null, action) => {
+  if (action.type === "FETCH_USER_DATA") {
+    return action.payload;
+  }
+  return userData;
+};
+
 export default combineReducers({
   fetchMovies: fetchMoviesReducer,
   selectedMovie: selectedMovieReducer,
@@ -257,4 +264,5 @@ export default combineReducers({
   showSearchResults: showSearchResultsReducer,
   currentPage: currentPageReducer,
   fetchCurrentUser: fetchCurrentUserReducer,
+  fetchUserData: fetchUserDataReducer,
 });

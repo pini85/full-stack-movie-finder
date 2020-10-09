@@ -15,6 +15,7 @@ import PopularActors from "./components/PopularActors/PopularActors.component";
 import Customize from "./components/Customize/Customize.component";
 import Film from "./components/spinners/Film/Film.component";
 import ScrollIntoView from "./components/ScrollIntoView.component";
+import SavedMovies from "./components/savedMovies/SavedMovies.component";
 
 const App = ({ theme, fetchCurrentUser }) => {
   useEffect(() => {
@@ -43,6 +44,7 @@ const App = ({ theme, fetchCurrentUser }) => {
             <Route path="/actors/:query/page/:page" component={ActorMovies} />
             <Route exact path="/customize" component={Customize} />
             <Route exact path="/spinner/" component={Film} />
+            <Route exact path="/user/savedmovies" component={SavedMovies} />
           </Switch>
         </ScrollIntoView>
       </Router>

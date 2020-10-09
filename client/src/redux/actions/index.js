@@ -555,13 +555,24 @@ export const currentPage = (page) => {
 
 export const fetchCurrentUser = () => async (dispatch) => {
   const user = await axios.get("/api/current_user");
-  console.log(user.data);
 
   dispatch({ type: "FETCH_CURRENT_USER", payload: user.data });
 };
 
 export const saveMovie = (id) => async (dispatch) => {
-  console.log(id);
-  const x = await axios.post("/api/save/movie", { id });
-  console.log(x.data);
+  const x = await axios.post("/api/user/movies/add", { id });
+};
+
+export const removeSavedMovie = (id) => async (dispatch) => {
+  axios.delete("/api/user/movies/remove", { id });
+};
+
+export const userData = () => async (dispatch, state) => {
+  const currentUser = state().fetchCurrentUser;
+  const savedMovies = currentUser ? await axios.get("/api/user/movies") : null;
+
+  const userData = {
+    savedMovies: savedMovies.data,
+  };
+  dispatch({ type: "FETCH_USER_DATA", payload: userData });
 };

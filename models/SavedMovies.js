@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const savedMoviesSchema = new Schema({
-  savedMovies: String,
+  movieId: String,
   _user: { type: Schema.Types.ObjectId, ref: "User" },
 });
 

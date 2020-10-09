@@ -21,5 +21,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 require("./routes/authRoutes")(app);
 require("./routes/savedMovieRoutes")(app);
+
 const PORT = 5000;
 app.listen(PORT);
