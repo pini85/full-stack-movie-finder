@@ -565,14 +565,27 @@ export const saveMovie = (id) => async (dispatch) => {
 
 export const removeSavedMovie = (id) => async (dispatch) => {
   axios.delete("/api/user/movies/remove", { id });
+  dispatch({ type: "REMOVE_USER_MOVIE", payload: id });
 };
 
 export const userData = () => async (dispatch, state) => {
   const currentUser = state().fetchCurrentUser;
-  const savedMovies = currentUser ? await axios.get("/api/user/movies") : null;
 
-  const userData = {
-    savedMovies: savedMovies.data,
-  };
-  dispatch({ type: "FETCH_USER_DATA", payload: userData });
+  if (currentUser) {
+    const savedMovies = await axios.get("/api/user/movies");
+
+    const userData = {
+      savedMovies: savedMovies.data,
+    };
+
+    return dispatch({
+      type: "FETCH_INITIAL_USER_DATA",
+      payload: userData,
+    });
+  } else {
+    return dispatch({
+      type: "FETCH_INITIAL_USER_DATA",
+      payload: null,
+    });
+  }
 };

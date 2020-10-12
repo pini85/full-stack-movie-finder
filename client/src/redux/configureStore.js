@@ -22,6 +22,7 @@ const persistConfig = {
     "displayMovie",
     "isFetching",
     "fetchUserData",
+    "fetchCurrentUser",
   ],
 };
 

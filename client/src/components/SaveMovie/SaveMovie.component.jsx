@@ -5,24 +5,34 @@ import { Container } from "./SaveMovie.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 const SaveMovie = ({ saveMovie, savedMovies, removeSavedMovie, movieId }) => {
+  const [movies, setMovies] = useState(null);
   const [isSaved, setIsSaved] = useState(false);
+  const [isDisabled, setDisabled] = useState(false);
+
   useEffect(() => {
     if (savedMovies) {
       const isSavedMovie = Boolean(
-        savedMovies.find((movie) => {
+        savedMovies.savedMovies.find((movie) => {
           return Number(movie.movieId) === movieId;
         })
       );
+
       setIsSaved(isSavedMovie);
     }
-  }, []);
+    setMovies(savedMovies);
+  }, [savedMovies]);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (!isSaved) {
-      saveMovie(movieId);
+      setDisabled(true);
+      await saveMovie(movieId);
       setIsSaved(true);
+      setDisabled(false);
     } else {
-      removeSavedMovie(movieId);
+      setDisabled(true);
+      await removeSavedMovie(movieId);
+      setIsSaved(false);
+      setDisabled(false);
     }
   };
   const styles = {
@@ -31,9 +41,11 @@ const SaveMovie = ({ saveMovie, savedMovies, removeSavedMovie, movieId }) => {
     color: isSaved ? "red" : "white",
   };
   return (
-    <Container onClick={handleClick}>
-      <FontAwesomeIcon icon={faHeart} style={styles} />
-    </Container>
+    <button disabled={isDisabled} onClick={handleClick}>
+      <Container>
+        <FontAwesomeIcon icon={faHeart} style={styles} />
+      </Container>
+    </button>
   );
 };
 // const mapStateToProps = (state) => ({

@@ -225,9 +225,24 @@ const fetchCurrentUserReducer = (currentUser = null, action) => {
   return currentUser;
 };
 
-const fetchUserDataReducer = (userData = null, action) => {
-  if (action.type === "FETCH_USER_DATA") {
-    return action.payload;
+const INITIAL_USER_STATE = {
+  savedMovies: [],
+};
+
+const fetchUserDataReducer = (userData = INITIAL_USER_STATE, action) => {
+  switch (action.type) {
+    case "FETCH_INITIAL_USER_DATA":
+      return {
+        ...userData,
+        savedMovies: action.payload,
+      };
+    case "REMOVE_USER_MOVIE":
+      return {
+        ...userData,
+        userData: userData.savedMovies.savedMovies.filter((movie) => {
+          return movie.movieId !== action.payload;
+        }),
+      };
   }
   return userData;
 };

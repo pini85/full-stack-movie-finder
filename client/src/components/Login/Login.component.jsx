@@ -6,9 +6,7 @@ import Button from "../Button/Button";
 const Login = ({ currentUser, userData }) => {
   useEffect(() => {
     const fetchUserData = async () => {
-      if (currentUser) {
-        await userData();
-      }
+      await userData();
     };
     fetchUserData();
   }, [currentUser]);
