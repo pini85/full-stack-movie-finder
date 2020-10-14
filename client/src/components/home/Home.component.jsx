@@ -14,7 +14,7 @@ import MovieListHome from "../MovieListCategory/MovieListCategory.component";
 const Home = (props) => {
   useEffect(() => {
     props.movieSlider();
-  }, []);
+  });
 
   const showList = () => {
     switch (props.optionActive) {

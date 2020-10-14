@@ -9,7 +9,7 @@ const Login = ({ currentUser, userData }) => {
       await userData();
     };
     fetchUserData();
-  }, [currentUser]);
+  }, [currentUser, userData]);
 
   return (
     <>

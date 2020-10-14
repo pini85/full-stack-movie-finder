@@ -73,25 +73,29 @@ const Carousel = ({
       case "movieCast":
         return (
           movieCast &&
-          movieCast.map((cast) => {
+          movieCast.map((cast, i) => {
             return (
-              <MovieCastCarousel
-                name={cast.name}
-                profile={cast.profile_path}
-                character={cast.character}
-              />
+              <div key={i}>
+                <MovieCastCarousel
+                  name={cast.name}
+                  profile={cast.profile_path}
+                  character={cast.character}
+                />
+              </div>
             );
           })
         );
       case "reviews":
         return (
           reviews &&
-          reviews.results.map((review) => {
+          reviews.results.map((review, i) => {
             return (
-              <ReviewsCarousel
-                author={review.author}
-                content={review.content}
-              />
+              <div key={i}>
+                <ReviewsCarousel
+                  author={review.author}
+                  content={review.content}
+                />
+              </div>
             );
           })
         );

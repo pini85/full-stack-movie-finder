@@ -14,7 +14,6 @@ import { Container, NavbarItemContainer } from "./Navbar.styles";
 
 const Navbar = (props) => {
   const width = UseWidth().width;
-  console.log(width);
 
   return (
     <Container>
@@ -38,7 +37,7 @@ const Navbar = (props) => {
             ></NavbarItem>
           </NavbarItemContainer>
           {props.currentUser && (
-            <NavbarItem link="/user/savedMovies" title="Saved Movies" />
+            <NavbarItem link="/savedMovies" title="Saved Movies" />
           )}
           <Login></Login>
           <Customize></Customize>
@@ -56,7 +55,7 @@ const Navbar = (props) => {
             }}
           >
             {props.currentUser && (
-              <NavbarItem link="/user/savedMovies" title="Saved Movies" />
+              <NavbarItem link="/savedmovies" title="Saved Movies" />
             )}
             <Login></Login>
             {width > 700 ? <Customize></Customize> : null}

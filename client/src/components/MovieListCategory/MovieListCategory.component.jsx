@@ -6,6 +6,7 @@ import {
   fetchNewestMovies,
   fetchHighestRatedMovies,
   isFetching,
+  fetchMovieByIds,
 } from "../../redux/actions/index";
 
 import Card from "../card/Card";
@@ -21,6 +22,10 @@ const MovieListCategory = (props) => {
           props.highestRatedMovies(1);
           props.isFetching(false);
           break;
+        case "saved movies":
+          props.fetchMovieByIds(props.savedMovieIds);
+          props.isFetching(false);
+
         default:
           return null;
       }
@@ -29,9 +34,10 @@ const MovieListCategory = (props) => {
   }, [props.category]);
 
   const iterate = (category) => {
+    console.log(category);
     return (
       category &&
-      category.results.map((item) => {
+      category.map((item) => {
         if (item === null) {
           return;
         }
@@ -51,6 +57,8 @@ const MovieListCategory = (props) => {
         return iterate(props.newestMoviesData);
       case "highest rating":
         return iterate(props.highestRatedMoviesData);
+      case "saved movies":
+        return iterate(props.savedMoviesData);
       default:
         return null;
     }
@@ -85,17 +93,19 @@ const MovieListCategory = (props) => {
 };
 const mapStateToProps = (state) => ({
   fetchMoviesData: state.fetchMovies,
-
   optionActive: state.optionActive,
-  newestMoviesData: state.newestMovies,
-  highestRatedMoviesData: state.highestRatedMovies,
+  newestMoviesData: state.newestMovies.results,
+  highestRatedMoviesData:
+    state.highestRatedMovies && state.highestRatedMovies.results,
   movieSliderData: state.movieSliderData,
+  savedMovieIds: state.fetchUserData.savedMovies,
+  savedMoviesData: state.userSavedMovies,
 });
 export default connect(mapStateToProps, {
   selectedMovie: selectedMovie,
   fetchMovies: (page) => fetchMovies(page),
   isFetching: (bool) => isFetching(bool),
-
+  fetchMovieByIds: (ids) => fetchMovieByIds(ids),
   newestMovies: (page) => fetchNewestMovies(page),
   highestRatedMovies: (page) => fetchHighestRatedMovies(page),
 })(MovieListCategory);

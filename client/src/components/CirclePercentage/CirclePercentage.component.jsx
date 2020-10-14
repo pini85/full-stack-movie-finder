@@ -4,13 +4,11 @@ import { connect } from "react-redux";
 import "./styles.css";
 
 const CirclePercentage = ({ colors, rating }) => {
-  console.log(colors);
-
   return (
     <div
       style={{
         backgroundColor: colors.darkVibrant,
-        color: colors.darkVibrant
+        color: colors.darkVibrant,
       }}
       className="circle-wrap"
     >
@@ -40,7 +38,7 @@ const CirclePercentage = ({ colors, rating }) => {
     </div>
   );
 };
-const mapStateToProps = state => ({
-  colors: state.displayMovie.colors
+const mapStateToProps = (state) => ({
+  colors: state.displayMovie.colors,
 });
 export default connect(mapStateToProps)(CirclePercentage);

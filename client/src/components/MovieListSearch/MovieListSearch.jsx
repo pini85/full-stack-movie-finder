@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import {
@@ -7,6 +7,7 @@ import {
   fetchAdvancedSearch,
   fetchActorMovies,
   fetchPopularActors,
+  fetchMovieByIds
 } from "../../redux/actions/index";
 import Pagination from "../Pagination/Pagination.component";
 
@@ -50,6 +51,8 @@ const MovieListSearch = (props) => {
           props.actorsMoviesData,
           query
         );
+        case "saved movies":
+          return showMovies(props.fetchMovieByIds)
       default:
         return null;
     }
@@ -92,4 +95,5 @@ export default connect(mapStateToProps, {
   fetchAdvancedSearch: (page) => fetchAdvancedSearch(page),
   fetchActorMovies: (id, page) => fetchActorMovies(id, page),
   fetchPopularActors: (page) => fetchPopularActors(page),
+  fetchMovieByIds: (ids,page) => fetchMovieByIds(ids,page)
 })(MovieListSearch);

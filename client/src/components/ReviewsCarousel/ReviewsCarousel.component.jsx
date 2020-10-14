@@ -5,8 +5,6 @@ import { connect } from "react-redux";
 import { ContentContainer } from "./ReviewsCarousel.styles";
 
 const ReviewsCarousel = ({ author, content, color }) => {
-  console.log(color);
-
   const [exposedText, setExposedText] = useState(null);
   const [hiddenText, setHiddenText] = useState(null);
   const [isHidden, setHidden] = useState(true);
@@ -19,9 +17,6 @@ const ReviewsCarousel = ({ author, content, color }) => {
     setHiddenText(content.slice(411));
   }, []);
   const handleClick = () => {
-    console.log("yup");
-    console.log(isHidden);
-
     setHidden((val) => !val);
   };
 

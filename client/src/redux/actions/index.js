@@ -15,6 +15,7 @@ import {
   tmdbCastInfoApi,
   tmdbCastMoviesApi,
   tmdbMovieReviewsApi,
+  tmdbMoviesById,
 } from "../../apis/tmdbApi";
 import omdbApi from "../../apis/omdbApi";
 import torrentApi from "../../apis/torrentApi";
@@ -61,6 +62,12 @@ export const fetchMovies = (page) => async (dispatch, getState) => {
 
     dispatch({ type: "FETCH_MOVIES", payload: response });
   }
+};
+
+export const fetchMovieByIds = (ids) => async (dispatch) => {
+  console.log("hi");
+  const movies = await Promise.all(ids.map((id) => tmdbMoviesById(Number(id))));
+  dispatch({ type: "USER_SAVED_MOVIES", payload: movies });
 };
 
 export const fetchNewestMovies = (page) => async (dispatch, getState) => {
@@ -560,11 +567,12 @@ export const fetchCurrentUser = () => async (dispatch) => {
 };
 
 export const saveMovie = (id) => async (dispatch) => {
-  const x = await axios.post("/api/user/movies/add", { id });
+  await axios.post("/api/user/movies/add", { id });
+  dispatch({ type: "ADD_USER_MOVIE", payload: id });
 };
 
 export const removeSavedMovie = (id) => async (dispatch) => {
-  axios.delete("/api/user/movies/remove", { id });
+  await axios.delete("/api/user/movies/remove", { id });
   dispatch({ type: "REMOVE_USER_MOVIE", payload: id });
 };
 
@@ -574,13 +582,11 @@ export const userData = () => async (dispatch, state) => {
   if (currentUser) {
     const savedMovies = await axios.get("/api/user/movies");
 
-    const userData = {
-      savedMovies: savedMovies.data,
-    };
+    const data = savedMovies.data.map((movie) => movie.movieId);
 
     return dispatch({
       type: "FETCH_INITIAL_USER_DATA",
-      payload: userData,
+      payload: data,
     });
   } else {
     return dispatch({

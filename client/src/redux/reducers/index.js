@@ -236,15 +236,27 @@ const fetchUserDataReducer = (userData = INITIAL_USER_STATE, action) => {
         ...userData,
         savedMovies: action.payload,
       };
+    case "ADD_USER_MOVIE":
+      return {
+        ...userData,
+        savedMovies: [...userData.savedMovies, String(action.payload)],
+      };
     case "REMOVE_USER_MOVIE":
       return {
         ...userData,
-        userData: userData.savedMovies.savedMovies.filter((movie) => {
-          return movie.movieId !== action.payload;
+        savedMovies: userData.savedMovies.filter((movie) => {
+          return Number(movie) !== action.payload;
         }),
       };
   }
   return userData;
+};
+
+const userSavedMoviesReducer = (movies = null, action) => {
+  if (action.type === "USER_SAVED_MOVIES") {
+    return action.payload;
+  }
+  return movies;
 };
 
 export default combineReducers({
@@ -280,4 +292,5 @@ export default combineReducers({
   currentPage: currentPageReducer,
   fetchCurrentUser: fetchCurrentUserReducer,
   fetchUserData: fetchUserDataReducer,
+  userSavedMovies: userSavedMoviesReducer,
 });

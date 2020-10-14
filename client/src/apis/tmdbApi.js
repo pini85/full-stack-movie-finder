@@ -1,17 +1,15 @@
-import shuffle from "lodash/shuffle";
 import { dateMonthsBack } from "../utlis/date";
 import {
   advancedSearchRunTime,
   advancedSearchRating,
   advancedSearchVotes,
-  advancedSearchGenres,
   advancedSearchCast,
   displayFromYear,
   displayToYear,
   displayGenre,
   advancedSearchSortBy,
 } from "../utlis/advancedSearchConfiguration";
-import { filterMovies, filterActors } from "../utlis/filterMovies";
+import { filterMovies } from "../utlis/filterMovies";
 const ApiKey = "3e296e6f6a1b142633468c58b584ab9b";
 
 export const tmdbApiDiscover = async () => {
@@ -203,6 +201,14 @@ export const tmdbMovieReviewsApi = async (id) => {
     `https://api.themoviedb.org/3/movie/${id} /reviews?api_key=${ApiKey}&language=en-US&page=1`
   );
   const data = response.json();
+  return data;
+};
+
+export const tmdbMoviesById = async (id) => {
+  const response = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${ApiKey}&language=en-US`
+  );
+  const data = await response.json();
   return data;
 };
 

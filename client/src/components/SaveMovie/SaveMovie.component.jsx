@@ -12,8 +12,8 @@ const SaveMovie = ({ saveMovie, savedMovies, removeSavedMovie, movieId }) => {
   useEffect(() => {
     if (savedMovies) {
       const isSavedMovie = Boolean(
-        savedMovies.savedMovies.find((movie) => {
-          return Number(movie.movieId) === movieId;
+        savedMovies.find((movie) => {
+          return Number(movie) === movieId;
         })
       );
 
@@ -27,10 +27,12 @@ const SaveMovie = ({ saveMovie, savedMovies, removeSavedMovie, movieId }) => {
       setDisabled(true);
       await saveMovie(movieId);
       setIsSaved(true);
+
       setDisabled(false);
     } else {
       setDisabled(true);
       await removeSavedMovie(movieId);
+
       setIsSaved(false);
       setDisabled(false);
     }
@@ -40,6 +42,7 @@ const SaveMovie = ({ saveMovie, savedMovies, removeSavedMovie, movieId }) => {
     width: "3rem",
     color: isSaved ? "red" : "white",
   };
+
   return (
     <button disabled={isDisabled} onClick={handleClick}>
       <Container>

@@ -94,11 +94,9 @@ const ShowMovieInfo = ({ colors, movie }) => {
 
       <ReviewContainer color={colors.vibrant}>
         {movie.ratings &&
-          movie.ratings.map((rate) => {
-            console.log(rate);
-
+          movie.ratings.map((rate, i) => {
             return (
-              <a href={rate.url} target="blank">
+              <a key={i} href={rate.url} target="blank">
                 <ReviewItem color={colors.vibrant}>
                   <Image src={rate.img} alt="" />
                   <ReviewValueContainer>
