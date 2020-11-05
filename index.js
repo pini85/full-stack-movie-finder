@@ -26,17 +26,12 @@ if (process.env.NODE_ENV === "production") {
   //if the handlers above won't resolve the request it will go to the next route handler below
 
   //Express will serve up production assests. Like our main.js or main.css
-  // app.use(express.static("client/build"));
-  // //if this handler cannot resolve it then go to the next one.
+  app.use(express.static("client/build"));
+  //if this handler cannot resolve it then go to the next one.
 
-  // const path = require("path");
-  // app.get("*", (req, res) => {
-  //   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  // });
-  const root = require("path").join(__dirname, "client", "build");
-  app.use(express.static(root));
+  const path = require("path");
   app.get("*", (req, res) => {
-    res.sendFile("index.html", { root });
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
 
