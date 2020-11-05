@@ -71,6 +71,7 @@ export const fetchMovieByIds = (ids) => async (dispatch) => {
 };
 
 export const fetchNewestMovies = (page) => async (dispatch, getState) => {
+  console.log("hi");
   const response = await tmdbNewestTodayApi(page);
 
   dispatch({ type: "FETCH_NEWEST_MOVIES", payload: response });
@@ -572,6 +573,7 @@ export const saveMovie = (id) => async (dispatch) => {
 };
 
 export const removeSavedMovie = (id) => async (dispatch) => {
+  console.log(id);
   await axios.delete("/api/user/movies/remove", { id });
   dispatch({ type: "REMOVE_USER_MOVIE", payload: id });
 };

@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
-const keys = require("./config/dev");
+const keys = require("./config/keys");
 app.use(bodyParser.json());
 require("./models/User");
 require("./models/SavedMovies");
@@ -22,5 +22,5 @@ app.use(passport.session());
 require("./routes/authRoutes")(app);
 require("./routes/savedMovieRoutes")(app);
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT);

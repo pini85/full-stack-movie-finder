@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const SavedMovies = mongoose.model("savedMovies");
+const auth = require("../middleware/auth");
 
 //todo
 /*
@@ -9,7 +10,6 @@ auth
 module.exports = (app) => {
   app.post("/api/user/movies/add", async (req, res) => {
     const movieId = req.body.id;
-    console.log(movieId);
 
     const saveMovie = new SavedMovies({
       movieId: movieId,
@@ -22,7 +22,7 @@ module.exports = (app) => {
     }
   });
 
-  app.get("/api/user/movies", async (req, res) => {
+  app.get("/api/user/movies", auth, async (req, res) => {
     try {
       const movies = await SavedMovies.find({});
       res.send(movies);
@@ -32,6 +32,8 @@ module.exports = (app) => {
   });
 
   app.delete("/api/user/movies/remove", async (req, res) => {
+    console.log(req.body);
+    console.log(req.body.id);
     // const id = req.body.id
     try {
       const savedMovie = await SavedMovies.findOneAndDelete({
@@ -42,7 +44,6 @@ module.exports = (app) => {
       }
       res.send(savedMovie);
     } catch (e) {
-      console.log(e);
       res.status(500).send(e);
     }
   });

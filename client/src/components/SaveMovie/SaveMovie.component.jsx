@@ -31,6 +31,7 @@ const SaveMovie = ({ saveMovie, savedMovies, removeSavedMovie, movieId }) => {
       setDisabled(false);
     } else {
       setDisabled(true);
+      console.log("yup");
       await removeSavedMovie(movieId);
 
       setIsSaved(false);

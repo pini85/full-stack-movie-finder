@@ -94,7 +94,7 @@ const MovieListCategory = (props) => {
 const mapStateToProps = (state) => ({
   fetchMoviesData: state.fetchMovies,
   optionActive: state.optionActive,
-  newestMoviesData: state.newestMovies.results,
+  newestMoviesData: state.newestMovies && state.newestMovies.results,
   highestRatedMoviesData:
     state.highestRatedMovies && state.highestRatedMovies.results,
   movieSliderData: state.movieSliderData,
