@@ -7,14 +7,14 @@ import {
   fetchAdvancedSearch,
   fetchActorMovies,
   fetchPopularActors,
-  fetchMovieByIds
+  fetchMovieByIds,
 } from "../../redux/actions/index";
 import Pagination from "../Pagination/Pagination.component";
 
 import Card from "../card/Card";
 const MovieListSearch = (props) => {
   const { query } = useParams();
-  console.log(query);
+
   const movies = () => {
     const showMovies = (fetch, data, actor) => {
       return (
@@ -51,8 +51,8 @@ const MovieListSearch = (props) => {
           props.actorsMoviesData,
           query
         );
-        case "saved movies":
-          return showMovies(props.fetchMovieByIds)
+      case "saved movies":
+        return showMovies(props.fetchMovieByIds);
       default:
         return null;
     }
@@ -95,5 +95,5 @@ export default connect(mapStateToProps, {
   fetchAdvancedSearch: (page) => fetchAdvancedSearch(page),
   fetchActorMovies: (id, page) => fetchActorMovies(id, page),
   fetchPopularActors: (page) => fetchPopularActors(page),
-  fetchMovieByIds: (ids,page) => fetchMovieByIds(ids,page)
+  fetchMovieByIds: (ids, page) => fetchMovieByIds(ids, page),
 })(MovieListSearch);

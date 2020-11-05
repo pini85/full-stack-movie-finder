@@ -34,7 +34,6 @@ const MovieListCategory = (props) => {
   }, [props.category]);
 
   const iterate = (category) => {
-    console.log(category);
     return (
       category &&
       category.map((item) => {

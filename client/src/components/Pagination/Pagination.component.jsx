@@ -29,7 +29,6 @@ const Pagination = ({
     const split = loc.split("/");
     return loc.replace(split[split.length - 1], currentPage);
   };
-  console.log(currentPage);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -44,8 +43,6 @@ const Pagination = ({
   useDidUpdateEffect(() => {
     const fetchData = async () => {
       if (actor) {
-        console.log("im here");
-
         isFetching(true);
 
         await api(actor, currentPage);
