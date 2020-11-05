@@ -78,6 +78,7 @@ a:visited {
 }
 :any-link {
   text-decoration: none;
+  color:var(--text-white);
 }
 /* button
 {
