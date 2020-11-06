@@ -10,6 +10,7 @@ const SaveMovie = ({
   removeSavedMovie,
   movieId,
   movieIdFromCard,
+  isCard,
 }) => {
   const [movies, setMovies] = useState(null);
   const [isSaved, setIsSaved] = useState(false);
@@ -17,8 +18,10 @@ const SaveMovie = ({
   //
 
   useEffect(() => {
+    const id = isCard ? movieIdFromCard.toString() : movieId.toString();
+
     if (savedMovies) {
-      const isSavedMovie = savedMovies.includes(movieIdFromCard.toString());
+      const isSavedMovie = savedMovies.includes(id);
 
       setIsSaved(isSavedMovie);
     }

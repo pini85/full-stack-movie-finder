@@ -84,7 +84,10 @@ const Card = (props) => {
                 </Link>
               </ButtonContainer>
             </Gradient>
-            <SaveMovie movieIdFromCard={props.movie.id}></SaveMovie>
+            <SaveMovie
+              isCard={true}
+              movieIdFromCard={props.movie.id}
+            ></SaveMovie>
             <TitleBack> {title(props.movie.title)}</TitleBack>
           </CardBack>
         </CardInner>
