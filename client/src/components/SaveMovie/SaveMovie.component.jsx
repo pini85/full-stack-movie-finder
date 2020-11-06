@@ -81,8 +81,8 @@ const SaveMovie = ({
 const mapStateToProps = (state) => {
   if (state.fetchUserData) {
     return {
-      movieId: state.selectedMovie.id,
-      savedMovies: state.fetchUserData.savedMovies,
+      movieId: state.selectedMovie && state.selectedMovie.id,
+      savedMovies: state.fetchUserData && state.fetchUserData.savedMovies,
     };
   } else {
     return {};

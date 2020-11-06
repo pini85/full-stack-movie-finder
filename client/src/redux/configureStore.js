@@ -27,15 +27,11 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
-const composeEnhancers =
-  (process.env.NODE_ENV !== "production" &&
-    typeof window !== "undefined" &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-  composeWithDevTools({
-    actionCreators,
-    trace: true,
-    traceLimit: 25,
-  });
+const composeEnhancers = composeWithDevTools({
+  actionCreators,
+  trace: true,
+  traceLimit: 25,
+});
 
 export let store = createStore(
   persistedReducer,
