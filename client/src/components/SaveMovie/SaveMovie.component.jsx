@@ -4,18 +4,21 @@ import { saveMovie, removeSavedMovie } from "../../redux/actions/index";
 import { Container } from "./SaveMovie.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-const SaveMovie = ({ saveMovie, savedMovies, removeSavedMovie, movieId }) => {
+const SaveMovie = ({
+  saveMovie,
+  savedMovies,
+  removeSavedMovie,
+  movieId,
+  movieIdFromCard,
+}) => {
   const [movies, setMovies] = useState(null);
   const [isSaved, setIsSaved] = useState(false);
   const [isDisabled, setDisabled] = useState(false);
+  //
 
   useEffect(() => {
     if (savedMovies) {
-      const isSavedMovie = Boolean(
-        savedMovies.find((movie) => {
-          return Number(movie) === movieId;
-        })
-      );
+      const isSavedMovie = savedMovies.includes(movieIdFromCard.toString());
 
       setIsSaved(isSavedMovie);
     }
@@ -23,16 +26,18 @@ const SaveMovie = ({ saveMovie, savedMovies, removeSavedMovie, movieId }) => {
   }, [savedMovies]);
 
   const handleClick = async () => {
+    const id = movieIdFromCard || movieId;
+
     if (!isSaved) {
       setDisabled(true);
-      await saveMovie(movieId);
+      await saveMovie(id);
       setIsSaved(true);
 
       setDisabled(false);
     } else {
       setDisabled(true);
-      console.log("yup");
-      await removeSavedMovie(movieId);
+
+      await removeSavedMovie(id);
 
       setIsSaved(false);
       setDisabled(false);
@@ -45,11 +50,20 @@ const SaveMovie = ({ saveMovie, savedMovies, removeSavedMovie, movieId }) => {
   };
 
   return (
-    <button disabled={isDisabled} onClick={handleClick}>
-      <Container>
+    <Container>
+      <button
+        style={{
+          outline: "none",
+          backgroundColor: "transparent",
+          border: "none",
+          cursor: "pointer",
+        }}
+        disabled={isDisabled}
+        onClick={handleClick}
+      >
         <FontAwesomeIcon icon={faHeart} style={styles} />
-      </Container>
-    </button>
+      </button>
+    </Container>
   );
 };
 // const mapStateToProps = (state) => ({

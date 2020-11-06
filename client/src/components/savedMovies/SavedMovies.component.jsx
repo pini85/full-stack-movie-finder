@@ -3,21 +3,18 @@ import { connect } from "react-redux";
 import { Container } from "./SavedMovies.styles";
 import { fetchMovieByIds } from "../../redux/actions/index";
 import MovieListHome from "../MovieListCategory/MovieListCategory.component";
-import Card from "../card/Card.jsx";
+import CategoryTitle from "../CategoryTitle/CategoryTitle.component";
 const SavedMovies = ({ movieIds, fetchMovieByIds }) => {
-  const [movies, setMovies] = useState(null);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     console.log(movieIds);
-  //     const savedMovies = await fetchMovieByIds(movieIds);
-  //     setMovies(savedMovies);
-  //   };
-  //   fetchData();
-  // }, []);
-
+  console.log(movieIds.length > 0);
   return (
     <>
+      <CategoryTitle title="Saved Movies" />
       <MovieListHome category="saved movies" />
+      {!movieIds.length > 0 && (
+        <h1 style={{ textAlign: "center", color: "white", fontWeight: "700" }}>
+          No saved movies
+        </h1>
+      )}
     </>
   );
 };

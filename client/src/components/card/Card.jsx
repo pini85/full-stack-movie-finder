@@ -6,6 +6,7 @@ import { compose } from "redux";
 import { selectedMovieId, selectedMovie } from "../../redux/actions/index";
 import Button from "../Button/Button";
 import Spin from "../spinners/Spin/Spin.component";
+import SaveMovie from "../SaveMovie/SaveMovie.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -25,8 +26,6 @@ const Card = (props) => {
   const [isLoaded, setLoaded] = useState(false);
 
   const handleClick = () => {
-    console.log("IM RUN TOO");
-
     props.selectedMovieId(props.movie.id);
     props.selectedMovie(props.movie);
 
@@ -85,6 +84,7 @@ const Card = (props) => {
                 </Link>
               </ButtonContainer>
             </Gradient>
+            <SaveMovie movieIdFromCard={props.movie.id}></SaveMovie>
             <TitleBack> {title(props.movie.title)}</TitleBack>
           </CardBack>
         </CardInner>

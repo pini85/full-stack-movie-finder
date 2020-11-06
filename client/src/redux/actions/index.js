@@ -593,7 +593,7 @@ export const userData = () => async (dispatch, state) => {
   } else {
     return dispatch({
       type: "FETCH_INITIAL_USER_DATA",
-      payload: null,
+      payload: [],
     });
   }
 };

@@ -19,11 +19,11 @@ const MovieListCategory = (props) => {
           props.isFetching(false);
           break;
         case "highest rating":
-          props.highestRatedMovies(1);
+          await props.highestRatedMovies(1);
           props.isFetching(false);
           break;
         case "saved movies":
-          props.fetchMovieByIds(props.savedMovieIds);
+          await props.fetchMovieByIds(props.savedMovieIds);
           props.isFetching(false);
 
         default:
@@ -31,7 +31,7 @@ const MovieListCategory = (props) => {
       }
     };
     fetchData();
-  }, [props.category]);
+  }, [props.category, props.savedMovieIds]);
 
   const iterate = (category) => {
     return (

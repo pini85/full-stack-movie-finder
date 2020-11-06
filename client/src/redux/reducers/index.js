@@ -252,7 +252,7 @@ const fetchUserDataReducer = (userData = INITIAL_USER_STATE, action) => {
   return userData;
 };
 
-const userSavedMoviesReducer = (movies = null, action) => {
+const userSavedMoviesReducer = (movies = [], action) => {
   if (action.type === "USER_SAVED_MOVIES") {
     return action.payload;
   }
