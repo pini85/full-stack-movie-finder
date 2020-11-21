@@ -5,6 +5,7 @@ import { compose } from "redux";
 import {
   fetchPopularActors,
   fetchActorMovies,
+  showSearchResults,
 } from "../../redux/actions/index";
 
 import ActorCard from "../ActorCard/ActorCard.component";
@@ -13,6 +14,7 @@ import { Container } from "./DisplayPopularActors.styles";
 const DisplayPopularActors = (props) => {
   const handleClick = (query) => {
     props.fetchActorMovies(query, 1);
+    props.showSearchResults("actor");
     props.history.push(`/search/${query}/page/1`);
   };
   return (
@@ -46,5 +48,6 @@ export default compose(
   connect(mapStateToProps, {
     fetchPopularActors: (page) => fetchPopularActors(page),
     fetchActorMovies: (name, page) => fetchActorMovies(name, page),
+    showSearchResults: (type) => showSearchResults(type),
   })
 )(DisplayPopularActors);

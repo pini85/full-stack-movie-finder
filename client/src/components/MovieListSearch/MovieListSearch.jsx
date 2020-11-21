@@ -37,6 +37,7 @@ const MovieListSearch = (props) => {
         </>
       );
     };
+
     switch (props.showSearchResults) {
       case "search":
         return showMovies(props.fetchMovies, props.fetchMoviesData);
