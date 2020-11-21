@@ -3,7 +3,8 @@
   --primary-color-light: #b1e7e7;
   --secondary-color: #524763;
   --secondary-color-light: #625577;
-  --secondary-color-lightest: #c1bacd;
+  --secondary-color-lightest: rgb(193, 186, 205);
+  --secondary-color-opacity: rgba(193, 186, 205, 0.5);
 }
 .beige-theme {
   --primary-color: #56ffc9;
@@ -11,6 +12,7 @@
   --secondary-color: #bd5d47;
   --secondary-color-light: #cf8979;
   --secondary-color-lightest: #e5c0b7;
+  --secondary-color-opacity: rgba(207, 137, 121, 0.5);
 }
 
 .dark-theme {
@@ -19,4 +21,5 @@
   --secondary-color: #200f21;
   --secondary-color-light: #382039;
   --secondary-color-lightest: #58325a;
+  --secondary-color-opacity: rgba(88, 50, 90, 0.5);
 }

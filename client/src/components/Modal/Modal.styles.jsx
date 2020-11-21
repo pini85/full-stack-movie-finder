@@ -1,12 +1,12 @@
 import styled from "styled-components";
-
-export const Container = styled.div`
+export const MainContainer = styled.div`
   position: absolute;
   /* top: ${(props) => (props.y ? `${props.y}px` : null)}; */
   /* left: -14vw; */
   z-index: 998;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding-top: 8rem;
   background: rgba(0, 0, 0, 0.65);
 
@@ -18,7 +18,19 @@ export const Container = styled.div`
   left: 0;
   overflow: hidden;
 `;
+export const Container = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 65%;
+  width: 70%;
+  background: rgba(0, 0, 0, 0.95);
+  background-color: var(--secondary-color-opacity);
+`;
 export const ButtonContainer = styled.div`
+  position: absolute;
+  right: -61px;
+  top: -21px;
   cursor: pointer;
   display: flex;
   justify-content: center;

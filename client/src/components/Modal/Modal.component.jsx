@@ -1,9 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
-
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 import { AnimatePresence, motion } from "framer-motion";
-import { Container, Button, ButtonContainer } from "./Modal.styles";
+import {
+  Container,
+  Button,
+  ButtonContainer,
+  MainContainer,
+} from "./Modal.styles";
 import CategoryTitle from "../CategoryTitle/CategoryTitle.component";
 const Modal = ({
   isToggled,
@@ -15,6 +21,7 @@ const Modal = ({
   children,
   title,
   theme,
+  ...props
 }) => {
   const handleClick = () => {
     setToggled(false);
@@ -25,39 +32,42 @@ const Modal = ({
       setOption(null);
     }
   };
+  console.log(props);
   return ReactDOM.createPortal(
     <AnimatePresence>
       {isToggled && (
         <div id="app" className={theme}>
-          <Container>
-            <motion.div
-              initial={{ opacity: 0, width: "75%" }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              duration={1}
-            >
-              <CategoryTitle title={title}></CategoryTitle>
+          <MainContainer onClick={handleClick}>
+            <Container onClick={(e) => e.stopPropagation()}>
               <motion.div
-                initial={{ y: 0 }}
-                animate={{ y: 30 }}
-                exit={{ y: 30 }}
+                initial={{ opacity: 0, width: "75%" }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                duration={1}
               >
-                <ButtonContainer
-                  style={
-                    !skew
-                      ? { position: "absolute", right: "-78px", top: "-29px" }
-                      : null
-                  }
+                <CategoryTitle title={title}></CategoryTitle>
+                <motion.div
+                  initial={{ y: 0 }}
+                  animate={{ y: 0 }}
+                  exit={{ y: 30 }}
                 >
-                  <Button onClick={handleClick}>
-                    <div> &#215;</div>
-                  </Button>
-                </ButtonContainer>
+                  <ButtonContainer
+                    style={
+                      !skew
+                        ? { position: "absolute", right: "-78px", top: "-29px" }
+                        : null
+                    }
+                  >
+                    <Button onClick={handleClick}>
+                      <div> &#215;</div>
+                    </Button>
+                  </ButtonContainer>
 
-                {children}
+                  {children}
+                </motion.div>
               </motion.div>
-            </motion.div>
-          </Container>
+            </Container>
+          </MainContainer>
         </div>
       )}
     </AnimatePresence>,
@@ -67,4 +77,4 @@ const Modal = ({
 const mapStateToProps = (state) => ({
   theme: state.displayTheme,
 });
-export default connect(mapStateToProps)(Modal);
+export default compose(withRouter, connect(mapStateToProps))(Modal);
