@@ -1,7 +1,10 @@
 import React from "react";
+import ReactDOM from "react-dom";
+import { connect } from "react-redux";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { Container, Button, ButtonContainer } from "./Modal.styles";
-
+import CategoryTitle from "../CategoryTitle/CategoryTitle.component";
 const Modal = ({
   isToggled,
   setToggled,
@@ -10,6 +13,8 @@ const Modal = ({
   setOption,
   skew,
   children,
+  title,
+  theme,
 }) => {
   const handleClick = () => {
     setToggled(false);
@@ -20,18 +25,23 @@ const Modal = ({
       setOption(null);
     }
   };
-  return (
+  return ReactDOM.createPortal(
     <AnimatePresence>
       {isToggled && (
-        <Container>
-          <motion.div
-            initial={{ opacity: 0, width: "75%" }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            duration={1}
-          >
-            <motion.div initial={{ y: 0 }} animate={{ y: 30 }} exit={{ y: 30 }}>
-              <div className="YO">
+        <div id="app" className={theme}>
+          <Container>
+            <motion.div
+              initial={{ opacity: 0, width: "75%" }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              duration={1}
+            >
+              <CategoryTitle title={title}></CategoryTitle>
+              <motion.div
+                initial={{ y: 0 }}
+                animate={{ y: 30 }}
+                exit={{ y: 30 }}
+              >
                 <ButtonContainer
                   style={
                     !skew
@@ -43,13 +53,18 @@ const Modal = ({
                     <div> &#215;</div>
                   </Button>
                 </ButtonContainer>
-              </div>
-              {children}
+
+                {children}
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </Container>
+          </Container>
+        </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.querySelector("#modal")
   );
 };
-export default Modal;
+const mapStateToProps = (state) => ({
+  theme: state.displayTheme,
+});
+export default connect(mapStateToProps)(Modal);

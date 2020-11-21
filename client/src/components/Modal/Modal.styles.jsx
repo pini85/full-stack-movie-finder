@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: absolute;
   /* top: ${(props) => (props.y ? `${props.y}px` : null)}; */
   /* left: -14vw; */
-  z-index: 999;
+  z-index: 998;
   display: flex;
   justify-content: center;
   padding-top: 8rem;
@@ -15,10 +15,9 @@ export const Container = styled.div`
   height: 100vh;
   width: 100vw;
   top: 0;
-    left: 0;
+  left: 0;
   overflow: hidden;
 `;
-
 export const ButtonContainer = styled.div`
   cursor: pointer;
   display: flex;
@@ -28,6 +27,7 @@ export const ButtonContainer = styled.div`
   margin-right: 5rem;
   height: 6rem;
   width: 6rem;
+  background: var(--primary-color);
   background: var(--primary-color);
   border-radius: 50%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);

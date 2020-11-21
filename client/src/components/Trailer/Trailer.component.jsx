@@ -40,6 +40,7 @@ const Trailer = ({ poster, fetchTrailers, trailers, colors }) => {
     return (
       trailers &&
       trailers.map((trailer) => {
+        console.log(trailer);
         return (
           <YouTubeContainer width={width}>
             <YouTube videoId={trailer.key} opts={optsYouTube} />
@@ -64,7 +65,12 @@ const Trailer = ({ poster, fetchTrailers, trailers, colors }) => {
         />
       </TrailerContainer>
       {isToggled && (
-        <Modal skew={true} isToggled={isToggled} setToggled={setToggled}>
+        <Modal
+          skew={true}
+          isToggled={isToggled}
+          setToggled={setToggled}
+          title="trailers"
+        >
           <Carousel
             items={trailersYouTube()}
             type="trailers"
