@@ -26,6 +26,10 @@ export const Container = styled.div`
   width: 70%;
   background: rgba(0, 0, 0, 0.95);
   background-color: var(--secondary-color-opacity);
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    transform: scale(0.8);
+  }
 `;
 export const ButtonContainer = styled.div`
   position: absolute;

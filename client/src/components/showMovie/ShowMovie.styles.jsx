@@ -97,9 +97,7 @@ export const OptionsContainer = styled.div`
     transform: perspective(500px) rotateY(45deg);
   }
   & > :nth-child(even) {
-    background: ${(
-    props
-  ) =>
+    background: ${(props) =>
     `linear-gradient(to left, ${props.color2}, ${props.color1})`};
     text-align: right;
     padding-right: 10%;

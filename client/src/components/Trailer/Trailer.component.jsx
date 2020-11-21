@@ -30,7 +30,7 @@ const Trailer = ({ poster, fetchTrailers, trailers, colors }) => {
   }, [isToggled, fetchTrailers]);
   const trailersYouTube = () => {
     const optsYouTube = {
-      height: "390",
+      height: "4000",
       width: "640",
       playerVars: {
         autoplay: 0,
