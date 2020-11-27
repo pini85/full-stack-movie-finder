@@ -22,12 +22,13 @@ export const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  height: 65%;
-  width: 70%;
+  height: 85vh;
+  width: 85vw;
   background: rgba(0, 0, 0, 0.95);
   background-color: var(--secondary-color-opacity);
   @media screen and (max-width: 700px) {
     width: 100%;
+    height: 95vh;
     transform: scale(0.8);
   }
 `;

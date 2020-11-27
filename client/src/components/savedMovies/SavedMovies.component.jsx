@@ -5,7 +5,6 @@ import { fetchMovieByIds } from "../../redux/actions/index";
 import MovieListHome from "../MovieListCategory/MovieListCategory.component";
 import CategoryTitle from "../CategoryTitle/CategoryTitle.component";
 const SavedMovies = ({ movieIds, fetchMovieByIds }) => {
-  console.log(movieIds.length > 0);
   return (
     <>
       <CategoryTitle title="Saved Movies" />

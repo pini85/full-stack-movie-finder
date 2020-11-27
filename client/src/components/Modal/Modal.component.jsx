@@ -40,7 +40,7 @@ const Modal = ({
           <MainContainer onClick={handleClick}>
             <Container onClick={(e) => e.stopPropagation()}>
               <motion.div
-                initial={{ opacity: 0, width: "75%" }}
+                initial={{ opacity: 0, width: "100%" }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 duration={1}

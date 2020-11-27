@@ -5,7 +5,7 @@ export const Container = styled.div`
   width: fit-content;
   font-size: 2.5rem;
   cursor: pointer;
-  margin: 2rem 0;
+  margin: 2rem 2rem;
 `;
 
 export const OptionTitle = styled.div`
@@ -48,4 +48,5 @@ export const IconContainer = styled.div`
 
 export const ButtonContainer = styled.div`
   margin-top: 5rem;
+  margin-left: 2rem;
 `;
