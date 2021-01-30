@@ -594,9 +594,10 @@ export const userData = () => async (dispatch, state) => {
     });
   }
 };
-export const setHamburgerOpen = () => {
+export const toggleHamburger = () => {
+  console.log("yup");
   return {
-    type: "IS_HAMBURGER_OPEN",
+    type: "TOGGLE_HAMBURGER",
     payload: null,
   };
 };

@@ -258,11 +258,11 @@ const userSavedMoviesReducer = (movies = [], action) => {
   }
   return movies;
 };
-const isHamburgerOpenReducer = (bool = false, action) => {
-  if (action.type === "IS_HAMBURGER_OPEN") {
-    return !bool;
+const toggleHamburgerReducer = (hidden = false, action) => {
+  if (action.type === "TOGGLE_HAMBURGER") {
+    return !hidden;
   }
-  return bool;
+  return hidden;
 };
 
 export default combineReducers({
@@ -299,5 +299,5 @@ export default combineReducers({
   fetchCurrentUser: fetchCurrentUserReducer,
   fetchUserData: fetchUserDataReducer,
   userSavedMovies: userSavedMoviesReducer,
-  isHamburgerOpen: isHamburgerOpenReducer,
+  toggleHamburger: toggleHamburgerReducer,
 });

@@ -5,6 +5,6 @@ export const Container = styled.div`
   top: 15px;
   left: 15px;
   color: white;
-  z-index: 998;
+  z-index: 1;
   cursor: pointer;
 `;

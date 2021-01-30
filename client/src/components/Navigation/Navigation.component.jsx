@@ -14,7 +14,7 @@ import useWidth from "../../hooks/useWidth.hooks";
 const Navigation = ({ setOpen }) => {
   const width = useWidth().width;
   const handleClick = () => {
-    setOpen((val) => !val);
+    setOpen();
   };
 
   return (

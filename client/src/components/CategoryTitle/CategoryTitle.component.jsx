@@ -7,7 +7,6 @@ import {
 
 const CategoryTitle = ({ title }) => {
   const formatTitle = () => {
-    console.log(title);
     const firstLetter = title && title.slice(0, 1);
     const restOfTitle = title && title.slice(1, title.length);
     return [firstLetter, restOfTitle];

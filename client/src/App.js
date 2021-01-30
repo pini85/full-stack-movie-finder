@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { fetchCurrentUser, setHamburgerOpen } from "./redux/actions/index";
+import { fetchCurrentUser, toggleHamburger } from "./redux/actions/index";
 import Home from "./components/home/Home.component";
 import Navbar from "./components/Navbar/Navbar";
 import Movies from "./components/Movies/Movies.component";
@@ -19,16 +19,15 @@ import SavedMovies from "./components/savedMovies/SavedMovies.component";
 const App = ({
   theme,
   fetchCurrentUser,
-  isHamburgerOpen,
-  setHamburgerOpen,
+  toggleHamburger,
+  setToggleHamburger,
 }) => {
   useEffect(() => {
     fetchCurrentUser();
   }, []);
   const handleOnClick = () => {
-    if (isHamburgerOpen) {
-      console.log("hi");
-      setHamburgerOpen();
+    if (toggleHamburger) {
+      setToggleHamburger();
     }
   };
   return (
@@ -64,10 +63,10 @@ const App = ({
 
 const mapStateToProps = (state) => ({
   theme: state.displayTheme,
-  isHamburgerOpen: state.isHamburgerOpen,
+  toggleHamburger: state.toggleHamburger,
 });
 
 export default connect(mapStateToProps, {
   fetchCurrentUser: fetchCurrentUser,
-  setHamburgerOpen: setHamburgerOpen,
+  setToggleHamburger: toggleHamburger,
 })(App);

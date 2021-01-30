@@ -9,6 +9,7 @@ import {
   search,
   fetchActorMovies,
   showSearchResults,
+  toggleHamburger,
 } from "../../redux/actions/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilm, faStar, faUser } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +17,11 @@ import useWidth from "../../hooks/useWidth.hooks";
 
 const Suggestion = (props) => {
   const width = useWidth().width;
+
   const handleClick = (type) => {
+    if (props.toggleHamburger) {
+      props.setToggleHamburger();
+    }
     props.movieSuggestions(false);
     props.setSearchQuery("");
     if (type === "movie") {
@@ -90,13 +95,18 @@ const Suggestion = (props) => {
   return <>{renderContent()}</>;
 };
 
+const mapStateToProps = (state) => ({
+  toggleHamburger: state.toggleHamburger,
+});
+
 export default compose(
   withRouter,
-  connect(null, {
+  connect(mapStateToProps, {
     selectedMovieId: selectedMovieId,
     search: search,
     movieSuggestions: movieSuggestions,
     fetchActorMovies: (name) => fetchActorMovies(name),
     showSearchResults: (type) => showSearchResults(type),
+    setToggleHamburger: toggleHamburger,
   })
 )(Suggestion);

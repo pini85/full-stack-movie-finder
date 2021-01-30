@@ -32,43 +32,43 @@ const Modal = ({
       setOption(null);
     }
   };
-  console.log(props);
+
   // return ReactDOM.createPortal(
   return (
     <AnimatePresence>
       {isToggled && (
         // <div id="app" className={theme}>
-          <MainContainer onClick={handleClick}>
-            <Container onClick={(e) => e.stopPropagation()}>
+        <MainContainer onClick={handleClick}>
+          <Container onClick={(e) => e.stopPropagation()}>
+            <motion.div
+              initial={{ opacity: 0, width: "100%" }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              duration={1}
+            >
+              <CategoryTitle title={title}></CategoryTitle>
               <motion.div
-                initial={{ opacity: 0, width: "100%" }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                duration={1}
+                initial={{ y: 0 }}
+                animate={{ y: 0 }}
+                exit={{ y: 30 }}
               >
-                <CategoryTitle title={title}></CategoryTitle>
-                <motion.div
-                  initial={{ y: 0 }}
-                  animate={{ y: 0 }}
-                  exit={{ y: 30 }}
+                <ButtonContainer
+                  style={
+                    !skew
+                      ? { position: "absolute", right: "-78px", top: "-29px" }
+                      : null
+                  }
                 >
-                  <ButtonContainer
-                    style={
-                      !skew
-                        ? { position: "absolute", right: "-78px", top: "-29px" }
-                        : null
-                    }
-                  >
-                    <Button onClick={handleClick}>
-                      <div> &#215;</div>
-                    </Button>
-                  </ButtonContainer>
+                  <Button onClick={handleClick}>
+                    <div> &#215;</div>
+                  </Button>
+                </ButtonContainer>
 
-                  {children}
-                </motion.div>
+                {children}
               </motion.div>
-            </Container>
-          </MainContainer>
+            </motion.div>
+          </Container>
+        </MainContainer>
         // </div>
       )}
     </AnimatePresence>
