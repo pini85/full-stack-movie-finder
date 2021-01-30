@@ -1,6 +1,6 @@
 import styled from "styled-components";
 export const MainContainer = styled.div`
-  position: absolute;
+  position: fixed;
   /* top: ${(props) => (props.y ? `${props.y}px` : null)}; */
   /* left: -14vw; */
   z-index: 998;
