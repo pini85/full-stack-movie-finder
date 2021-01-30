@@ -33,10 +33,11 @@ const Modal = ({
     }
   };
   console.log(props);
-  return ReactDOM.createPortal(
+  // return ReactDOM.createPortal(
+  return (
     <AnimatePresence>
       {isToggled && (
-        <div id="app" className={theme}>
+        // <div id="app" className={theme}>
           <MainContainer onClick={handleClick}>
             <Container onClick={(e) => e.stopPropagation()}>
               <motion.div
@@ -68,11 +69,12 @@ const Modal = ({
               </motion.div>
             </Container>
           </MainContainer>
-        </div>
+        // </div>
       )}
-    </AnimatePresence>,
-    document.querySelector("#modal")
+    </AnimatePresence>
   );
+  //   document.querySelector("#modal")
+  // );
 };
 const mapStateToProps = (state) => ({
   theme: state.displayTheme,

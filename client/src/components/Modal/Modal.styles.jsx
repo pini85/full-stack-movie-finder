@@ -7,7 +7,7 @@ export const MainContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 8rem;
+  /* padding-top: 8rem; */
   background: rgba(0, 0, 0, 0.65);
 
   transform: perspective(0px) rotateY(0deg);
@@ -17,6 +17,9 @@ export const MainContainer = styled.div`
   top: 0;
   left: 0;
   overflow: hidden;
+  @media screen and (max-width: 700px) {
+    padding: 0;
+  }
 `;
 export const Container = styled.div`
   position: relative;
@@ -28,7 +31,7 @@ export const Container = styled.div`
   background-color: var(--secondary-color-opacity);
   @media screen and (max-width: 700px) {
     width: 100%;
-    height: 95vh;
+    /* height: 95vh; */
     transform: scale(0.8);
   }
 `;

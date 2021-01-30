@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { fetchCurrentUser } from "./redux/actions/index";
 import Home from "./components/home/Home.component";
 import Navbar from "./components/Navbar/Navbar";
-import Search from "./components/Search/Search.component";
 import Movies from "./components/Movies/Movies.component";
 import ShowMovie from "./components/showMovie/ShowMovie.component";
 import MovieListSearch from "./components/MovieListSearch/MovieListSearch";
