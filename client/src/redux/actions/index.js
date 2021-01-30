@@ -594,3 +594,9 @@ export const userData = () => async (dispatch, state) => {
     });
   }
 };
+export const setHamburgerOpen = () => {
+  return {
+    type: "IS_HAMBURGER_OPEN",
+    payload: null,
+  };
+};

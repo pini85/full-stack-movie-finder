@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { fetchCurrentUser } from "./redux/actions/index";
+import { fetchCurrentUser, setHamburgerOpen } from "./redux/actions/index";
 import Home from "./components/home/Home.component";
 import Navbar from "./components/Navbar/Navbar";
 import Movies from "./components/Movies/Movies.component";
@@ -16,12 +16,23 @@ import Film from "./components/spinners/Film/Film.component";
 import ScrollIntoView from "./components/ScrollIntoView.component";
 import SavedMovies from "./components/savedMovies/SavedMovies.component";
 
-const App = ({ theme, fetchCurrentUser }) => {
+const App = ({
+  theme,
+  fetchCurrentUser,
+  isHamburgerOpen,
+  setHamburgerOpen,
+}) => {
   useEffect(() => {
     fetchCurrentUser();
   }, []);
+  const handleOnClick = () => {
+    if (isHamburgerOpen) {
+      console.log("hi");
+      setHamburgerOpen();
+    }
+  };
   return (
-    <div id="app" className={theme}>
+    <div onClick={handleOnClick} id="app" className={theme}>
       <Router>
         <ScrollIntoView>
           <Navbar />
@@ -53,8 +64,10 @@ const App = ({ theme, fetchCurrentUser }) => {
 
 const mapStateToProps = (state) => ({
   theme: state.displayTheme,
+  isHamburgerOpen: state.isHamburgerOpen,
 });
 
 export default connect(mapStateToProps, {
   fetchCurrentUser: fetchCurrentUser,
+  setHamburgerOpen: setHamburgerOpen,
 })(App);

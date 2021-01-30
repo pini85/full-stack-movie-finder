@@ -23,6 +23,7 @@ const persistConfig = {
     "isFetching",
     "fetchCurrentUser",
     "userSavedMovies",
+    "isHamburgerOpen",
   ],
 };
 
